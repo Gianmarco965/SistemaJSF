@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAlbumTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAlbumLabel_albumPK_idalbum}" for="albumPK_idalbum" />
+                    <h:inputText id="albumPK_idalbum" value="#{albumController.selected.albumPK.idalbum}" title="#{bundle.CreateAlbumTitle_albumPK_idalbum}" required="true" requiredMessage="#{bundle.CreateAlbumRequiredMessage_albumPK_idalbum}"/>
+                    <h:outputLabel value="#{bundle.CreateAlbumLabel_nombrealbum}" for="nombrealbum" />
+                    <h:inputText id="nombrealbum" value="#{albumController.selected.nombrealbum}" title="#{bundle.CreateAlbumTitle_nombrealbum}" required="true" requiredMessage="#{bundle.CreateAlbumRequiredMessage_nombrealbum}"/>
+                    <h:outputLabel value="#{bundle.CreateAlbumLabel_anio}" for="anio" />
+                    <h:inputText id="anio" value="#{albumController.selected.anio}" title="#{bundle.CreateAlbumTitle_anio}" required="true" requiredMessage="#{bundle.CreateAlbumRequiredMessage_anio}"/>
+                    <h:outputLabel value="#{bundle.CreateAlbumLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{albumController.selected.valor}" title="#{bundle.CreateAlbumTitle_valor}" required="true" requiredMessage="#{bundle.CreateAlbumRequiredMessage_valor}"/>
+                    <h:outputLabel value="#{bundle.CreateAlbumLabel_portada}" for="portada" />
+                    <h:inputText id="portada" value="#{albumController.selected.portada}" title="#{bundle.CreateAlbumTitle_portada}" required="true" requiredMessage="#{bundle.CreateAlbumRequiredMessage_portada}"/>
+                    <h:outputLabel value="#{bundle.CreateAlbumLabel_artista}" for="artista" />
+                    <h:selectOneMenu id="artista" value="#{albumController.selected.artista}" title="#{bundle.CreateAlbumTitle_artista}" required="true" requiredMessage="#{bundle.CreateAlbumRequiredMessage_artista}">
+                        <f:selectItems value="#{artistaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAlbumLabel_disquera}" for="disquera" />
+                    <h:selectOneMenu id="disquera" value="#{albumController.selected.disquera}" title="#{bundle.CreateAlbumTitle_disquera}" required="true" requiredMessage="#{bundle.CreateAlbumRequiredMessage_disquera}">
+                        <f:selectItems value="#{disqueraController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{albumController.create}" value="#{bundle.CreateAlbumSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{albumController.prepareList}" value="#{bundle.CreateAlbumShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAlbumIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

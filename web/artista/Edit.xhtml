@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditArtistaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditArtistaLabel_idartista}" for="idartista" />
+                    <h:inputText id="idartista" value="#{artistaController.selected.idartista}" title="#{bundle.EditArtistaTitle_idartista}" required="true" requiredMessage="#{bundle.EditArtistaRequiredMessage_idartista}"/>
+                    <h:outputLabel value="#{bundle.EditArtistaLabel_nombreartista}" for="nombreartista" />
+                    <h:inputText id="nombreartista" value="#{artistaController.selected.nombreartista}" title="#{bundle.EditArtistaTitle_nombreartista}" required="true" requiredMessage="#{bundle.EditArtistaRequiredMessage_nombreartista}"/>
+                    <h:outputLabel value="#{bundle.EditArtistaLabel_apellidoartista}" for="apellidoartista" />
+                    <h:inputText id="apellidoartista" value="#{artistaController.selected.apellidoartista}" title="#{bundle.EditArtistaTitle_apellidoartista}" required="true" requiredMessage="#{bundle.EditArtistaRequiredMessage_apellidoartista}"/>
+                    <h:outputLabel value="#{bundle.EditArtistaLabel_nacionalidad}" for="nacionalidad" />
+                    <h:inputText id="nacionalidad" value="#{artistaController.selected.nacionalidad}" title="#{bundle.EditArtistaTitle_nacionalidad}" required="true" requiredMessage="#{bundle.EditArtistaRequiredMessage_nacionalidad}"/>
+                    <h:outputLabel value="#{bundle.EditArtistaLabel_fechanac}" for="fechanac" />
+                    <h:inputText id="fechanac" value="#{artistaController.selected.fechanac}" title="#{bundle.EditArtistaTitle_fechanac}" required="true" requiredMessage="#{bundle.EditArtistaRequiredMessage_fechanac}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{artistaController.update}" value="#{bundle.EditArtistaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditArtistaViewLink}"/>
+                <br />
+                <h:commandLink action="#{artistaController.prepareList}" value="#{bundle.EditArtistaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditArtistaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
